@@ -6,6 +6,15 @@ implemented with Nextflow.
 [![nextflow](https://img.shields.io/badge/nextflow-%E2%89%A50.24.0-brightgreen.svg)](http://nextflow.io)
 [![CircleCI status](https://circleci.com/gh/nextflow-io/rnaseq-nf.png?style=shield)](https://circleci.com/gh/nextflow-io/rnaseq-nf/tree/master)
 
+
+## Federation
+To setup the minikube federation use `https://github.com/slateci/minifed`
+This will setup two contexts (alpha, beta), a persistent volume must be added to each of the contexts. This can be done with the `pv.yaml` for the volume, and `claim.yaml` for the claim. 
+
+Once the kubernetes federation is setup, Nextflow can run on either contect using the included profiles. 
+
+
+
 ## Requirements 
 
 * Unix-like operating system (Linux, macOS, etc)
