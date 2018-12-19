@@ -59,7 +59,7 @@ Channel
 
 process index {
     tag "$transcriptome_file.simpleName"
-    pod=[nodeSelector: 'cloud.google.com/gke-nodepool=highmemory-pool']
+    pod=[nodeSelector: 'cloud.google.com/gke-nodepool=highmem']
     
     input:
     file transcriptome from transcriptome_file
