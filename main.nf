@@ -59,7 +59,6 @@ Channel
 
 process index {
     tag "$transcriptome_file.simpleName"
-    pod=[nodeSelector: 'cloud.google.com/gke-nodepool=highmem']
     
     input:
     file transcriptome from transcriptome_file
@@ -76,7 +75,6 @@ process index {
  
 process quant {
     tag "$pair_id"
-    pod=[nodeSelector: 'cloud.google.com/gke-nodepool=highmem']
 
     input:
     file index from index_ch
@@ -94,7 +92,6 @@ process quant {
 process fastqc {
     tag "FASTQC on $sample_id"
     publishDir "${params.outdir}/", mode:'copy'
-    pod=[nodeSelector: 'cloud.google.com/gke-nodepool=highmem']
 
     input:
     set sample_id, file(reads) from read_pairs2_ch
@@ -116,7 +113,6 @@ process fastqc {
 
 process multiqc {
     publishDir params.outdir, mode:'copy'
-    pod=[nodeSelector: 'cloud.google.com/gke-nodepool=highmem']
 
     input:
     file('*') from quant_ch.mix(fastqc_ch).collect()
